@@ -1,117 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./imagenes/LOGOPAGINA.jpg">
-    <title>Tejidos Vivy</title>
-    <link rel="stylesheet" href="./CSS/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Ropa</title>
+  <style>
+
+    html {
+      box-sizing: border-box;
+      font-size: 60.5%;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .contenedor {
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo-img {
+      max-width: 40rem;
+      margin: 3rem 0;
+    }
+
+    nav {
+      margin: 3rem 0;
+      background-color: #a27baa;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-family: Arial, sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #ffe;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .producto {
+      border-radius: 0.7rem;
+      background-color: #6a6262c4;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .producto:hover {
+      background-color: #9146a4;
+    }
+
+    .producto h3 {
+      font-size: 2.5rem;
+    }
+
+    .producto p {
+      font-size: 2rem;
+    }
+
+    .producto button {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Modal Carrito */
+    #carrito-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #carrito-modal.active {
+      display: flex;
+    }
+
+    #carrito {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 50rem;
+      text-align: center;
+    }
+
+    #carrito button {
+      background-color: red;
+      color: white;
+      border: none;
+      float: right;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      margin-top: 5rem;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="img-fondo">
-        <div class="velo-negro">
-            <header class="header">
-                <a href="/inicio.html">
-                    <img src="./imagenes/LOGOPAGINA.jpg" alt="logo" class="logo-img">
-                </a>
-            </header>
+  <header class="header">
+    <img class="logo-img" src="https://via.placeholder.com/400x100?text=Logo" alt="Logo">
+  </header>
 
-            <nav>
-                <a href="inicio.html">Inicio</a>
-                <li class="desplegar">
-                    <a class="activa desplegar" href="index.html"> Tienda </a>
-                    <ul class="sub_me_desple">
-                        <li><a href="#">Buzos Peludos</a></li>
-                        <li><a href="#">Sweaters</a></li>
-                        <li><a href="#">Buzos Wide Cut</a></li>
-                    </ul>
-                </li>
-                <a href="nosotros.html">Nosotros</a>
-                <a href="./contacto.html">Contacto</a>
-                <a href="./preguntas.html">Informacion</a>
-                <a href="#" id="ver-carrito">🛒 Ver Carrito</a>
-            </nav>
+  <nav>
+    <a href="#" onclick="mostrarProductos('todos')">Inicio</a>
+    <a href="#" onclick="mostrarProductos('buzos')">Buzos Peludos</a>
+    <a href="#" onclick="mostrarProductos('sweaters')">Sweaters</a>
+    <a href="#" onclick="mostrarProductos('pantalones')">Pantalones</a>
+    <a href="#" onclick="toggleCarrito()">🛒 Carrito</a>
+  </nav>
 
-            <main class="contenedor">
-                <h1 class="nuestros-productos">Nuestros Productos</h1>
-                <div class="productos">
+  <main class="contenedor">
+    <div class="productos" id="productos-container"></div>
+  </main>
 
-                    <!-- Ejemplo de producto -->
-                    <div class="producto">
-                        <div class="producto-blanco">
-                            <img src="./imagenes/Buzo Rojo.jpg" alt="Buzo Rojo">
-                        </div>
-                        <div class="producto-informacion">
-                            <p class="producto-nombre">Buzo Rojo Largo</p>
-                            <p class="producto-precio">$5300</p>
-                            <button class="agregar-carrito" data-nombre="Buzo Rojo Largo" data-precio="5300">Agregar al carrito</button>
-                        </div>
-                    </div>
-
-                    <!-- Agregar los demás productos siguiendo el mismo patrón -->
-                    <!-- ... -->
-
-                </div>
-            </main>
-
-            <!-- Carrito Modal -->
-            <div id="carrito-modal" class="modal oculto">
-                <div class="modal-contenido">
-                    <span id="cerrar-carrito" class="cerrar">&times;</span>
-                    <h2>Carrito de Compras</h2>
-                    <ul id="lista-carrito"></ul>
-                    <p id="total-carrito">Total: $0</p>
-                </div>
-            </div>
-
-            <footer class="footer">
-                <!-- Íconos redes sociales -->
-                <!-- ... contenido del footer intacto ... -->
-            </footer>
-        </div>
+  <!-- Carrito Modal -->
+  <div id="carrito-modal">
+    <div id="carrito">
+      <button onclick="toggleCarrito()">&times;</button>
+      <h2>Carrito de Compras</h2>
+      <ul id="carrito-lista"></ul>
+      <p id="total">Total: $0</p>
     </div>
+  </div>
 
-    <script>
-        const botonesAgregar = document.querySelectorAll(".agregar-carrito");
-        const modal = document.getElementById("carrito-modal");
-        const cerrar = document.getElementById("cerrar-carrito");
-        const verCarrito = document.getElementById("ver-carrito");
-        const listaCarrito = document.getElementById("lista-carrito");
-        const totalCarrito = document.getElementById("total-carrito");
+  <footer>
+    <p>&copy; 2025 Tienda de Ropa</p>
+  </footer>
 
-        let carrito = [];
+  <script>
+    const productos = [
+      { nombre: "Buzo Peludo Negro", precio: 9000, imagen: "https://via.placeholder.com/300x200?text=Buzo", categoria: "buzos" },
+      { nombre: "Sweater Azul", precio: 7500, imagen: "https://via.placeholder.com/300x200?text=Sweater", categoria: "sweaters" },
+      { nombre: "Pantalón Cargo", precio: 8200, imagen: "https://via.placeholder.com/300x200?text=Pantalon", categoria: "pantalones" },
+      { nombre: "Buzo Peludo Marrón", precio: 9100, imagen: "https://via.placeholder.com/300x200?text=Buzo+2", categoria: "buzos" },
+      { nombre: "Sweater Verde", precio: 7700, imagen: "https://via.placeholder.com/300x200?text=Sweater+2", categoria: "sweaters" }
+    ];
 
-        botonesAgregar.forEach(boton => {
-            boton.addEventListener("click", () => {
-                const nombre = boton.getAttribute("data-nombre");
-                const precio = parseFloat(boton.getAttribute("data-precio"));
-                carrito.push({ nombre, precio });
-                actualizarCarrito();
-            });
-        });
+    const carrito = [];
+    let total = 0;
 
-        function actualizarCarrito() {
-            listaCarrito.innerHTML = "";
-            let total = 0;
-            carrito.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = `${item.nombre} - $${item.precio}`;
-                listaCarrito.appendChild(li);
-                total += item.precio;
-            });
-            totalCarrito.textContent = `Total: $${total}`;
-        }
+    function mostrarProductos(categoria) {
+      const contenedor = document.getElementById("productos-container");
+      contenedor.innerHTML = "";
+      const filtrados = categoria === "todos" ? productos : productos.filter(p => p.categoria === categoria);
 
-        verCarrito.addEventListener("click", () => {
-            modal.classList.remove("oculto");
-        });
+      filtrados.forEach(p => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+          <img src="${p.imagen}" alt="${p.nombre}">
+          <h3>${p.nombre}</h3>
+          <p>$${p.precio}</p>
+          <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
 
-        cerrar.addEventListener("click", () => {
-            modal.classList.add("oculto");
-        });
-    </script>
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      total += precio;
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("carrito-lista");
+      lista.innerHTML = "";
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - $${item.precio}`;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").textContent = `Total: $${total}`;
+    }
+
+    function toggleCarrito() {
+      document.getElementById("carrito-modal").classList.toggle("active");
+    }
+
+    // Mostrar todos los productos al iniciar
+    mostrarProductos("todos");
+  </script>
 </body>
 </html>
