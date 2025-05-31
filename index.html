@@ -1,235 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda de Ropa</title>
-  <style>
-
-    html {
-      box-sizing: border-box;
-      font-size: 60.5%;
-    }
-
-    *, *::before, *::after {
-      box-sizing: inherit;
-    }
-
-    body {
-      margin: 0;
-      background-color: #f3f3f3;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .contenedor {
-      max-width: 120rem;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .header {
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo-img {
-      max-width: 40rem;
-      margin: 3rem 0;
-    }
-
-    nav {
-      margin: 3rem 0;
-      background-color: #a27baa;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 5rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      font-family: Arial, sans-serif;
-      font-weight: 800;
-      font-size: 2.5rem;
-      color: white;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      color: #ffe;
-    }
-
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .producto {
-      border-radius: 0.7rem;
-      background-color: #6a6262c4;
-      padding: 2rem;
-      text-align: center;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .producto:hover {
-      background-color: #9146a4;
-    }
-
-    .producto h3 {
-      font-size: 2.5rem;
-    }
-
-    .producto p {
-      font-size: 2rem;
-    }
-
-    .producto button {
-      margin-top: 1rem;
-      padding: 1rem 2rem;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-
-    /* Modal Carrito */
-    #carrito-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    #carrito-modal.active {
-      display: flex;
-    }
-
-    #carrito {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      width: 90%;
-      max-width: 50rem;
-      text-align: center;
-    }
-
-    #carrito button {
-      background-color: red;
-      color: white;
-      border: none;
-      float: right;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    footer {
-      background-color: black;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      font-family: Arial, sans-serif;
-      margin-top: 5rem;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Ropa</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  <header class="header">
-    <img class="logo-img" src="https://via.placeholder.com/400x100?text=Logo" alt="Logo">
-  </header>
+  <header class="header">
+    <img class="logo-img" src="https://via.placeholder.com/400x100?text=Logo" alt="Logo">
+  </header>
 
-  <nav>
-    <a href="#" onclick="mostrarProductos('todos')">Inicio</a>
-    <a href="#" onclick="mostrarProductos('buzos')">Buzos Peludos</a>
-    <a href="#" onclick="mostrarProductos('sweaters')">Sweaters</a>
-    <a href="#" onclick="mostrarProductos('pantalones')">Pantalones</a>
-    <a href="#" onclick="toggleCarrito()">🛒 Carrito</a>
-  </nav>
+  <nav>
+    <a href="#" onclick="mostrarProductos('todos')">Inicio</a>
+    <a href="#" onclick="mostrarProductos('buzos')">Buzos Peludos</a>
+    <a href="#" onclick="mostrarProductos('sweaters')">Sweaters</a>
+    <a href="#" onclick="mostrarProductos('pantalones')">Pantalones</a>
+    <a href="#" onclick="toggleCarrito()">🛒 Carrito</a>
+  </nav>
 
-  <main class="contenedor">
-    <div class="productos" id="productos-container"></div>
-  </main>
+  <main class="contenedor">
+    <h2 class="nustros-productos">Nuestros Productos</h2> 
+    <div class="productos" id="productos-container"></div>
+  </main>
 
-  <!-- Carrito Modal -->
-  <div id="carrito-modal">
-    <div id="carrito">
-      <button onclick="toggleCarrito()">&times;</button>
-      <h2>Carrito de Compras</h2>
-      <ul id="carrito-lista"></ul>
-      <p id="total">Total: $0</p>
-    </div>
-  </div>
+    <div id="carrito-modal">
+    <div id="carrito">
+      <button onclick="toggleCarrito()">&times;</button>
+      <h2>Carrito de Compras</h2>
+      <ul id="carrito-lista"></ul>
+      <p id="total">Total: $0</p>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Tienda de Ropa</p>
-  </footer>
+  <footer>
+    <p>&copy; 2025 Tienda de Ropa</p>
+  </footer>
 
-  <script>
-    const productos = [
-      { nombre: "Buzo Peludo Negro", precio: 9000, imagen: "https://via.placeholder.com/300x200?text=Buzo", categoria: "buzos" },
-      { nombre: "Sweater Azul", precio: 7500, imagen: "https://via.placeholder.com/300x200?text=Sweater", categoria: "sweaters" },
-      { nombre: "Pantalón Cargo", precio: 8200, imagen: "https://via.placeholder.com/300x200?text=Pantalon", categoria: "pantalones" },
-      { nombre: "Buzo Peludo Marrón", precio: 9100, imagen: "https://via.placeholder.com/300x200?text=Buzo+2", categoria: "buzos" },
-      { nombre: "Sweater Verde", precio: 7700, imagen: "https://via.placeholder.com/300x200?text=Sweater+2", categoria: "sweaters" }
-    ];
+  <script>
+    const productos = [
+      { nombre: "Buzo Peludo Negro", precio: 9000, imagen: "https://via.placeholder.com/300x200?text=Buzo", categoria: "buzos" },
+      { nombre: "Sweater Azul", precio: 7500, imagen: "https://via.placeholder.com/300x200?text=Sweater", categoria: "sweaters" },
+      { nombre: "Pantalón Cargo", precio: 8200, imagen: "https://via.placeholder.com/300x200?text=Pantalon", categoria: "pantalones" },
+      { nombre: "Buzo Peludo Marrón", precio: 9100, imagen: "https://via.placeholder.com/300x200?text=Buzo+2", categoria: "buzos" },
+      { nombre: "Sweater Verde", precio: 7700, imagen: "https://via.placeholder.com/300x200?text=Sweater+2", categoria: "sweaters" },
+      // Added the product from your image
+      { nombre: "Buzo Rojo Largo", precio: 5300, imagen: "image_629c71.jpg", categoria: "buzos" } 
+    ];
 
-    const carrito = [];
-    let total = 0;
+    const carrito = [];
+    let total = 0;
 
-    function mostrarProductos(categoria) {
-      const contenedor = document.getElementById("productos-container");
-      contenedor.innerHTML = "";
-      const filtrados = categoria === "todos" ? productos : productos.filter(p => p.categoria === categoria);
+    function mostrarProductos(categoria) {
+      const contenedor = document.getElementById("productos-container");
+      contenedor.innerHTML = "";
+      const filtrados = categoria === "todos" ? productos : productos.filter(p => p.categoria === categoria);
 
-      filtrados.forEach(p => {
-        const div = document.createElement("div");
-        div.classList.add("producto");
-        div.innerHTML = `
-          <img src="${p.imagen}" alt="${p.nombre}">
-          <h3>${p.nombre}</h3>
-          <p>$${p.precio}</p>
-          <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
-        `;
-        contenedor.appendChild(div);
-      });
-    }
+      filtrados.forEach(p => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+          <div class="producto-blanco"> 
+            <img src="${p.imagen}" alt="${p.nombre}">
+          </div>
+          <h3 class="producto-nombre">${p.nombre}</h3>
+          <p class="producto-precio">$${p.precio}</p>
+          <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Agregar al carrito</button>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      total += precio;
-      actualizarCarrito();
-    }
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      total += precio;
+      actualizarCarrito();
+    }
 
-    function actualizarCarrito() {
-      const lista = document.getElementById("carrito-lista");
-      lista.innerHTML = "";
-      carrito.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nombre} - $${item.precio}`;
-        lista.appendChild(li);
-      });
-      document.getElementById("total").textContent = `Total: $${total}`;
-    }
+    function actualizarCarrito() {
+      const lista = document.getElementById("carrito-lista");
+      lista.innerHTML = "";
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - $${item.precio}`;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").textContent = `Total: $${total}`;
+    }
 
-    function toggleCarrito() {
-      document.getElementById("carrito-modal").classList.toggle("active");
-    }
+    function toggleCarrito() {
+      document.getElementById("carrito-modal").classList.toggle("active");
+    }
 
-    // Mostrar todos los productos al iniciar
-    mostrarProductos("todos");
-  </script>
+    // Mostrar todos los productos al iniciar
+    mostrarProductos("todos");
+  </script>
 </body>
 </html>
