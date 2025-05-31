@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./imagenes/LOGOPAGINA.jpg">
-    <title>Tejidos Vivy - Inicio</title>
+    <title>Tejidos Vivy - Nuestros Productos</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
@@ -18,64 +18,123 @@
                 <a href="index.html">
                     <img src="./imagenes/LOGOPAGINA.jpg" alt="logo" class="logo-img">
                 </a>
-                <div class="cart-icon-container">
+                <nav class="nav-principal">
+                    <a class="activa" href="index.html">Inicio</a>
+                    <a href="#">Buzos Peludos</a>
+                    <a href="#">Sweaters</a>
+                    <a href="#">Pantalones</a>
                     <a href="./carrito.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
+                        Carrito
                     </a>
-                </div>
+                </nav>
             </header>
 
-            <nav>
-                <a class="activa" href="inicio.html">Inicio</a>
-                <li class="desplegar">
-                    <a class="desplegar" href="index.html"> Tienda </a>
-                    <ul class="sub_me_desple">
-                        <li> <a href="#">Buzos Peludos</a></li>
-                        <li> <a href="#">Sweaters</a></li>
-                        <li><a href="#">Buzos Wide Cut</a></li>
-                    </ul>
-                </li>
-                <a href="nosotros.html">Nosotros</a>
-                <a href="./contacto.html">Contacto</a>
-                <a href="./informacion.html">Informacion</a>
-            </nav>
-
             <main class="contenedor">
-                <h1 class="nustros-productos">Productos más vendidos</h1>
+                <h1 class="nuestros-productos-titulo">Nuestros Productos</h1>
 
-                <div class="productos">
-                    <a href="">
-                        <div class="producto">
-                            <div class="producto-blanco">
-                                <img src="./imagenes/Buzo Peludo Blanco.jpg" alt="Buzo Peludo Blanco">
-                            </div>
-                            <div class="producto-informacion">
-                                <p class="producto-nombre">Buzo Peludo Blanco</p>
-                            </div>
+                <div class="productos-grid">
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Buzo Peludo Muzgo.jpg" alt="Buzo Peludo Negro">
                         </div>
-                    </a>
-                    <a href="">
-                        <div class="producto">
-                            <div class="producto-blanco">
-                                <img src="./imagenes/Negro Cut.jpg" alt="Buzo Negro Wid Cut">
-                            </div>
-                            <div class="producto-informacion">
-                                <p class="producto-nombre">Buzo Negro Wid Cut</p>
-                            </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Peludo Negro</p>
+                            <p class="producto-precio">$9000</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
                         </div>
-                    </a>
-                    <a href="">
-                        <div class="producto">
-                            <div class="producto-blanco">
-                                <img src="./imagenes/Blanco Cut.jpg" alt="Buzo Blanco Wid Cut">
-                            </div>
-                            <div class="producto-informacion">
-                                <p class="producto-nombre">Buzo Blanco Wid Cut</p>
-                            </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Sweater Rayado.jpg" alt="Sweater Azul">
                         </div>
-                    </a>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Sweater Azul</p>
+                            <p class="producto-precio">$7500</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/dfa28f7319a9b2aea89540f02c6e910.jpg" alt="Pantalón Cargo">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Pantalón Cargo</p>
+                            <p class="producto-precio">$8200</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Sweater Marron.jpg" alt="Buzo Peludo Marrón">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Peludo Marrón</p>
+                            <p class="producto-precio">$9100</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Buzo Peludo Blanco.jpg" alt="Buzo Peludo Blanco">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Peludo Blanco</p>
+                            <p class="producto-precio">$8800</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Buzo Peludo Violeta.jpg" alt="Buzo Peludo Violeta">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Peludo Violeta</p>
+                            <p class="producto-precio">$9300</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                     <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Saco Multicolor.jpg" alt="Saco Multicolor">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Saco Multicolor</p>
+                            <p class="producto-precio">$10500</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Negro Cut.jpg" alt="Buzo Negro Cut">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Negro Cut</p>
+                            <p class="producto-precio">$8700</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
+                    <div class="producto">
+                        <div class="producto-imagen">
+                            <img src="./imagenes/Blanco Cut.jpg" alt="Buzo Blanco Cut">
+                        </div>
+                        <div class="producto-info">
+                            <p class="producto-nombre">Buzo Blanco Cut</p>
+                            <p class="producto-precio">$8700</p>
+                            <button class="boton-carrito">Agregar al carrito</button>
+                        </div>
+                    </div>
+
                 </div>
             </main>
         </div>
@@ -132,7 +191,7 @@
             </svg>
         </a>
 
-        <p>Copyright© 2022-Todos los derechos reservados TiendaONLINE</p>
+        <p>Copyright© 2022-Todos los derechos reservados Tejidos Vivy</p>
     </footer>
 </body>
 
